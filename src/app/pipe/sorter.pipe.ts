@@ -13,7 +13,9 @@ export class SorterPipe implements PipeTransform {
    */
   transform(value: any[], key: string): any[] {
     // A KÖVETKEZŐ SORT TÁVOLÍTSD EL!!!
-    return value;
+    if (!Array.isArray(value) || !key) {
+      return value;
+    }
 
     /**
      * FELADAT!
@@ -21,7 +23,17 @@ export class SorterPipe implements PipeTransform {
      * térj vissza a value változóval.
      */
 
+    return value.sort((a, b) => {
+      if ( a && b == Number){
+        return a-b;
+      }
+      else {
+        let string1: string = a.Strring().toLowerCase()
+        let string2: string = b.String().toLowerCase()
+        return string1.localeCompare(string2)
+      }
 
+    })
 
     /**
      * FELADAT!
